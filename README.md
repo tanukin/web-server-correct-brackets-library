@@ -5,7 +5,6 @@ Starting the environment
 ---
  
 ~~~
-cd nginx_php-fmp/
 docker-compose up -d
 ~~~
 
