@@ -22,7 +22,7 @@ class HTTPRequest implements HTTPRequestInterface
             throw new MethodIsForbiddenHTTPException('Only use the POST method');
 
         if (!$this->issetKey($key))
-            throw new InvalidArgumentHTTPException(sprintf('Not received %s argument', $key));
+            throw new InvalidArgumentHTTPException(sprintf('%s argument not passed', $key));
 
         return $_POST[$key];
     }

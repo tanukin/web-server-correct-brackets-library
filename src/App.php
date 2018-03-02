@@ -30,6 +30,9 @@ class App implements AppInterface
      */
     private $key = "string";
 
+    const OK = 200;
+    const BAD_REQUEST = 400;
+
     /**
      * App constructor.
      *
@@ -44,21 +47,21 @@ class App implements AppInterface
         $this->bracketFactory = $bracketFactory;
     }
 
-    public function run()
+    public function run(): void
     {
         try {
             $value = $this->httpRequest->getValue($this->key);
             $bracket = $this->bracketFactory->getBracket($value);
 
             if ($bracket->check())
-                $this->httpResponse->setHTTPStatusCode(200)->setMessage("Brackets are set correctly");
+                $this->httpResponse->setHTTPStatusCode(self::OK)->setMessage("Brackets are set correctly");
             else
-                $this->httpResponse->setHTTPStatusCode(400)->setMessage("Brackets are not set correctly");
+                $this->httpResponse->setHTTPStatusCode(self::BAD_REQUEST)->setMessage("Brackets are not set correctly");
 
         } catch (HTTPException $e) {
-            $this->httpResponse->setHTTPStatusCode(400)->setMessage($e->getMessage());
+            $this->httpResponse->setHTTPStatusCode(self::BAD_REQUEST)->setMessage($e->getMessage());
         } catch (InvalidArgumentException $e) {
-            $this->httpResponse->setHTTPStatusCode(400)->setMessage($e->getMessage());
+            $this->httpResponse->setHTTPStatusCode(self::BAD_REQUEST)->setMessage($e->getMessage());
         } finally {
             $this->httpResponse->send();
         }
