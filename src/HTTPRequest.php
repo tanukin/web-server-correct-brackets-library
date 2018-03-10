@@ -44,6 +44,4 @@ class HTTPRequest implements HTTPRequestInterface
     {
         return array_key_exists($key, $_POST);
     }
-
-
 }

@@ -16,7 +16,6 @@ class HTTPResponse implements HTTPResponseInterface
      */
     private $message;
 
-
     /**
      * @param int $code
      *
@@ -25,6 +24,7 @@ class HTTPResponse implements HTTPResponseInterface
     public function setHTTPStatusCode(int $code): HTTPResponseInterface
     {
         $this->codeStatus = $code;
+
         return $this;
     }
 
@@ -36,13 +36,13 @@ class HTTPResponse implements HTTPResponseInterface
     public function setMessage(string $message): HTTPResponseInterface
     {
         $this->message = $message;
+
         return $this;
     }
 
-    public function send()
+    public function send(): void
     {
         http_response_code($this->codeStatus);
         echo $this->message;
-        fastcgi_finish_request();
     }
 }
