@@ -5,6 +5,9 @@ Starting the environment
 ---
  
 ~~~
+composer install
+~~~
+~~~
 docker-compose up -d
 ~~~
 
