@@ -9,7 +9,7 @@
   ],
   "require": {
     "php": "~7.1",
-    "anikin-elets/correct-brackets": "~1.0.0"
+    "anikin-elets/correct-brackets": "~2.0.0"
   },
   "autoload": {
     "psr-4": {
