@@ -40,7 +40,11 @@ class App implements AppInterface
      * @param HTTPResponseInterface $httpResponse
      * @param BracketFactory $bracketFactory
      */
-    public function __construct(HTTPRequestInterface $httpRequest, HTTPResponseInterface $httpResponse, BracketFactory $bracketFactory)
+    public function __construct(
+        HTTPRequestInterface $httpRequest,
+        HTTPResponseInterface $httpResponse,
+        BracketFactory $bracketFactory
+    )
     {
         $this->httpRequest = $httpRequest;
         $this->httpResponse = $httpResponse;
@@ -53,7 +57,7 @@ class App implements AppInterface
             $value = $this->httpRequest->getValue($this->key);
             $bracket = $this->bracketFactory->getBracket($value);
 
-            if ($bracket->check())
+            if ($bracket->execute())
                 $this->httpResponse->setHTTPStatusCode(self::OK)->setMessage("Brackets are set correctly");
             else
                 $this->httpResponse->setHTTPStatusCode(self::BAD_REQUEST)->setMessage("Brackets are not set correctly");

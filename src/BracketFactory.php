@@ -2,19 +2,18 @@
 
 namespace WebServer;
 
-use Library\Services\BracketService;
+use Library\Command\BracketCommand;
+use Library\Interfaces\BracketCommandInterface;
 
 class BracketFactory
 {
     /**
-     * @param $string
+     * @param string $string
      *
-     * @return BracketService
-     *
-     * @throws \Library\Exceptions\InvalidArgumentException
+     * @return BracketCommandInterface
      */
-    public function getBracket(string $string): BracketService
+    public function getBracket(string $string): BracketCommandInterface
     {
-        return new BracketService($string);
+        return new BracketCommand($string);
     }
 }
